@@ -1,33 +1,25 @@
-#include "Shader.h"
-
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
 
+#include "Shader.h"
+#include "Window.h"
+
+void OnBeginWindow(GLFWwindow*);
+void OnUpdate(float deltaTime);
+
 int main()
 {
-    GLFWwindow* window;
+    Window window(&OnBeginWindow, &OnUpdate);
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
+    window.Update();
 
-    /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
-    if (!window)
-    {
-        glfwTerminate();
-        return -1;
-    }
+    return 0;
+}
 
-    /* Make the window's context current */
-    glfwMakeContextCurrent(window);
-
-    if (glewInit() != GLEW_OK)
-        return -1;
-
-
+void OnBeginWindow(GLFWwindow *)
+{
     unsigned int vbo;
     float positions[] = {
         -0.5f, -0.5f,
@@ -42,25 +34,10 @@ int main()
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0);
 
     Shader basic("res/shaders/Basic.shader");
-    glUseProgram(basic.GetID());
+    basic.Bind();
+}
 
-    /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
-    {
-        /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        /* Swap front and back buffers */
-        glfwSwapBuffers(window);
-
-        /* Poll for and process events */
-        glfwPollEvents();
-    }
-
-    glDeleteProgram(basic.GetID());
-
-    glfwTerminate();
-    return 0;
+void OnUpdate(float deltaTime)
+{
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 }

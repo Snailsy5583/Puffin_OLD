@@ -18,12 +18,18 @@ class Shader
 {
 public:
 	Shader(const std::string & source);
+	~Shader();
 
 	int CreateShader();
 
 	ShaderProgramSource ParseShader();
 
 	static unsigned int CompileShader(unsigned int type, const std::string & source);
+
+	void Bind();
+	void UnBind();
+
+	void DeleteShader();
 
 private:
 	std::string& path;

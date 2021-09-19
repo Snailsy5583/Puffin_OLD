@@ -6,6 +6,11 @@ Shader::Shader(const std::string & source) : path((std::string &) source)
     this->id = CreateShader();
 }
 
+Shader::~Shader()
+{
+    glDeleteProgram(id);
+}
+
 ShaderProgramSource Shader::ParseShader()
 {
     std::ifstream stream(path);
@@ -66,7 +71,7 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string & source
     {
         int length;
         glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-        char * message = (char *) alloca(length * sizeof(char));
+        char * message = (char *) malloc(length * sizeof(char));
         glGetShaderInfoLog(id, length, &length, message);
         std::cout << "Failed to compile " << (type == GL_VERTEX_SHADER ? "vertex" : "fragment") << " shader!" << std::endl;
         std::cout << message << std::endl;
@@ -76,3 +81,9 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string & source
 
     return id;
 }
+
+void Shader::Bind() { glUseProgram(id); }
+
+void Shader::UnBind() { glUseProgram(0); }
+
+void Shader::DeleteShader() { glDeleteProgram(id); }
