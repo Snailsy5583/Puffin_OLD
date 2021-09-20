@@ -8,6 +8,8 @@
 #include <sstream>
 #include <fstream>
 
+#include "CustomGL.h"
+
 struct ShaderProgramSource
 {
 	std::string VertexSource;
