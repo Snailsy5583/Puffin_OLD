@@ -35,7 +35,8 @@ void Window::Update()
     OnBeginWindow(window);
     while (!glfwWindowShouldClose(window))
     {
-        glClear(GL_COLOR_BUFFER_BIT);
+        GLCall(glClear(GL_COLOR_BUFFER_BIT));
+
         OnUpdate(0);
         glfwSwapBuffers(window);
         glfwPollEvents();
