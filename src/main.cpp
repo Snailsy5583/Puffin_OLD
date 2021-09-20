@@ -45,5 +45,5 @@ void OnBeginWindow(GLFWwindow *)
 
 void OnUpdate(float deltaTime)
 {
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 }
