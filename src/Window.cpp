@@ -6,7 +6,14 @@ Window::Window(void (*_OnBeginWindow)(GLFWwindow*), void(*_OnUpdate)(float))
     if (!glfwInit())
         return;
 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+
+    glfwSwapInterval(1);
 
     if (!window)
     {
@@ -38,6 +45,7 @@ void Window::Update()
         GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
         OnUpdate(0);
+        glfwSwapInterval(1);
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
