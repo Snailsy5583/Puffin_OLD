@@ -8,12 +8,18 @@
 #include <sstream>
 #include <fstream>
 
-#include "CustomGL.h"
+#include "Renderer.h"
 
 struct ShaderProgramSource
 {
 	std::string VertexSource;
 	std::string FragmentSource;
+};
+
+enum class UniformType
+{
+	INT_1, INT_2, INT_3, INT_4,
+	FLOAT_1, FLOAT_2, FLOAT_3, FLOAT_4
 };
 
 class Shader
@@ -27,6 +33,8 @@ public:
 	ShaderProgramSource ParseShader();
 
 	static unsigned int CompileShader(unsigned int type, const std::string & source);
+
+	void SetUniform(UniformType type, const char * name, float _1, float _2=0, float _3=0, float _4=0);
 
 	void Bind();
 	void UnBind();

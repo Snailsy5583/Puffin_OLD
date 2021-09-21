@@ -82,6 +82,39 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string & source
     return id;
 }
 
+void Shader::SetUniform(UniformType type, const char * name, float _1, float _2, float _3, float _4)
+{
+    GLCall(int location = glGetUniformLocation(id, name));
+    ASSERT(location != -1);
+    switch (type)
+    {
+    case UniformType::INT_1:
+        GLCall(glUniform1i(location, (int) _1));
+        break;
+    case UniformType::INT_2:
+        GLCall(glUniform2i(location, (int) _1, (int) _2));
+        break;
+    case UniformType::INT_3:
+        GLCall(glUniform3i(location, (int) _1, (int) _2, (int) _3));
+        break;
+    case UniformType::INT_4:
+        GLCall(glUniform4i(location, (int) _1, (int) _2, (int) _3, (int) _4));
+        break;
+    case UniformType::FLOAT_1:
+        GLCall(glUniform1f(location, _1));
+        break;
+    case UniformType::FLOAT_2:
+        GLCall(glUniform2f(location, _1, _2));
+        break;
+    case UniformType::FLOAT_3:
+        GLCall(glUniform3f(location, _1, _2, _3));
+        break;
+    case UniformType::FLOAT_4:
+        GLCall(glUniform4f(location, _1, _2, _3, _4));
+        break;
+    }
+}
+
 void Shader::Bind() { GLCall(glUseProgram(id)); }
 
 void Shader::UnBind() { GLCall(glUseProgram(0)); }

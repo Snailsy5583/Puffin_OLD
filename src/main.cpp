@@ -1,6 +1,9 @@
 #include "Shader.h"
 #include "Window.h"
 
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+
 Shader * basic;
 
 float r = 0;
@@ -36,6 +39,8 @@ void OnBeginWindow(GLFWwindow *)
     GLCall(glGenVertexArrays(1, &vao));
     GLCall(glBindVertexArray(vao));
 
+    VertexBuffer vb(positions, sizeof(positions));
+
     unsigned int vbo;
     GLCall(glGenBuffers(1, &vbo));
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo));
@@ -43,6 +48,8 @@ void OnBeginWindow(GLFWwindow *)
     
     GLCall(glEnableVertexAttribArray(0));
     GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
+
+    IndexBuffer ib(indices, sizeof(indices)/sizeof(unsigned int));
 
     unsigned int ibo;
     GLCall(glGenBuffers(1, &ibo));
@@ -52,20 +59,11 @@ void OnBeginWindow(GLFWwindow *)
 
     basic = new Shader("res/shaders/Basic.shader");
     basic->Bind();
+
+    basic->SetUniform(UniformType::FLOAT_4, "u_Color", 1, 0, 1, 1);
 }
 
 void OnUpdate(float deltaTime)
 {
-    GLCall(int location = glGetUniformLocation(basic->GetID(), "u_Color"));
-    ASSERT(location != -1);
-    GLCall(glUniform4f(location, r, 0, 0, 1));
-
     GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
-
-    if (r > 1)
-        increment = -0.05f;
-    else if (r < 0)
-        increment =  0.05f;
-
-    r += increment;
 }
