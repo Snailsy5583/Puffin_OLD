@@ -22,4 +22,7 @@ private:
 
 	void (*OnUpdate)(float);
 	void (*OnBeginWindow)(GLFWwindow*);
+
+public:
+	inline GLFWwindow * GetWindow() const { return window; }
 };

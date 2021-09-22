@@ -10,8 +10,8 @@ Window::Window(void (*_OnBeginWindow)(GLFWwindow*), void(*_OnUpdate)(float))
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
 
-
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    
+    window = glfwCreateWindow(640, 480, "Puffin", NULL, NULL);
 
     glfwSwapInterval(1);
 

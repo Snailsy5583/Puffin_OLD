@@ -1,11 +1,19 @@
 #pragma once
 
 #include <GL/glew.h>
-//#include "IndexBuffer.h"
+#include "VertexArray.h"
+#include "Shader.h"
+#include "IndexBuffer.h"
 
 bool CheckErrors(const char * file, const char * function, int line);
 
 void ClearErrors();
+
+class Renderer
+{
+public:
+	void Draw(const VertexArray & va, const IndexBuffer & ib, const Shader & shader);
+};
 
 //void DrawIndices();
 

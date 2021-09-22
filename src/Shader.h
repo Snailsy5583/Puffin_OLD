@@ -7,8 +7,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
-
-#include "Renderer.h"
+#include <unordered_map>
 
 struct ShaderProgramSource
 {
@@ -36,17 +35,18 @@ public:
 
 	void SetUniform(UniformType type, const char * name, float _1, float _2=0, float _3=0, float _4=0);
 
-	void Bind();
-	void UnBind();
+	void Bind() const;
+	void UnBind() const;
 
 	void DeleteShader();
 
 private:
-	std::string& path;
-	ShaderProgramSource source;
-	unsigned int id;
+	std::string& m_Path;
+	ShaderProgramSource m_Source;
+	unsigned int m_RendererID;
+	std::unordered_map<const char *, int> m_UniformLocationCache;
 
 public:
-	inline ShaderProgramSource GetSource() const { return source; }
-	inline unsigned int GetID() const { return id; }
+	inline ShaderProgramSource GetSource() const { return m_Source; }
+	inline unsigned int GetID() const { return m_RendererID; }
 };

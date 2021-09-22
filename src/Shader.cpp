@@ -1,19 +1,20 @@
 #include "Shader.h"
+#include "Renderer.h"
 
-Shader::Shader(const std::string & source) : path((std::string &) source)
+Shader::Shader(const std::string & source) : m_Path((std::string &) source)
 {
-    this->source = ParseShader();
-    this->id = CreateShader();
+    this->m_Source = ParseShader();
+    this->m_RendererID = CreateShader();
 }
 
 Shader::~Shader()
 {
-    GLCall(glDeleteProgram(id));
+    GLCall(glDeleteProgram(m_RendererID));
 }
 
 ShaderProgramSource Shader::ParseShader()
 {
-    std::ifstream stream(path);
+    std::ifstream stream(m_Path);
 
     enum class ShaderType
     {
@@ -44,8 +45,8 @@ ShaderProgramSource Shader::ParseShader()
 int Shader::CreateShader()
 {
     unsigned int program = glCreateProgram();
-    unsigned int vs = CompileShader(GL_VERTEX_SHADER, source.VertexSource);
-    unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, source.FragmentSource);
+    unsigned int vs = CompileShader(GL_VERTEX_SHADER, m_Source.VertexSource);
+    unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, m_Source.FragmentSource);
 
     GLCall(glAttachShader(program, vs));
     GLCall(glAttachShader(program, fs));
@@ -84,8 +85,15 @@ unsigned int Shader::CompileShader(unsigned int type, const std::string & source
 
 void Shader::SetUniform(UniformType type, const char * name, float _1, float _2, float _3, float _4)
 {
-    GLCall(int location = glGetUniformLocation(id, name));
-    ASSERT(location != -1);
+    int location;
+    if (m_UniformLocationCache.find(name) != m_UniformLocationCache.end())
+        location = m_UniformLocationCache[name];
+    else
+    {
+        GLCall(location = glGetUniformLocation(m_RendererID, name));
+        ASSERT(location != -1);
+    }
+
     switch (type)
     {
     case UniformType::INT_1:
@@ -115,8 +123,8 @@ void Shader::SetUniform(UniformType type, const char * name, float _1, float _2,
     }
 }
 
-void Shader::Bind() { GLCall(glUseProgram(id)); }
+void Shader::Bind() const { GLCall(glUseProgram(m_RendererID)); }
 
-void Shader::UnBind() { GLCall(glUseProgram(0)); }
+void Shader::UnBind() const { GLCall(glUseProgram(0)); }
 
-void Shader::DeleteShader() { GLCall(glDeleteProgram(id)); }
+void Shader::DeleteShader() { GLCall(glDeleteProgram(m_RendererID)); }
