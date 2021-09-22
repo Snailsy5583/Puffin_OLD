@@ -9,6 +9,8 @@
 #include <fstream>
 #include <unordered_map>
 
+#include <glm/glm.hpp>
+
 struct ShaderProgramSource
 {
 	std::string VertexSource;
@@ -18,7 +20,9 @@ struct ShaderProgramSource
 enum class UniformType
 {
 	INT_1, INT_2, INT_3, INT_4,
-	FLOAT_1, FLOAT_2, FLOAT_3, FLOAT_4
+	FLOAT_1, FLOAT_2, FLOAT_3, FLOAT_4,
+
+	MAT_4
 };
 
 class Shader
@@ -33,7 +37,10 @@ public:
 
 	static unsigned int CompileShader(unsigned int type, const std::string & source);
 
-	void SetUniform(UniformType type, const char * name, float _1, float _2=0, float _3=0, float _4=0);
+	void SetUniform(UniformType type, const char * name, float _1=0, float _2=0, float _3=0, float _4=0);
+	void SetUniformMat4(const char * name, glm::mat4 & matrix);
+
+	int GetUniformLocation(const char * name);
 
 	void Bind() const;
 	void UnBind() const;

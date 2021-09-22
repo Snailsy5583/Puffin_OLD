@@ -7,6 +7,9 @@
 #include "VertexBufferLayout.h"
 #include "Texture.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 void OnBeginWindow(GLFWwindow*);
 void OnUpdate(float deltaTime);
 
@@ -39,14 +42,17 @@ int main()
 
     IndexBuffer ib(indices, sizeof(indices) / sizeof(unsigned int));
 
+
+    glm::mat4 proj = glm::ortho(-4.f, 4.f, -3.f, 3.f, -1.f, 1.f);
+
+
     Shader basic = Shader("res/shaders/basic.shader");
     basic.Bind();
-
-    basic.SetUniform(UniformType::FLOAT_4, "u_Color", 1, 1, 1, 1);
+    basic.SetUniform(UniformType::FLOAT_4, "u_Color", 1, 0, 1, 1);
+    basic.SetUniformMat4("u_MVP", proj);
 
     Texture texture("res/textures/image.png");
     texture.Bind();
-
     basic.SetUniform(UniformType::INT_1, "u_Texture", 0);
 
     va.Unbind();
