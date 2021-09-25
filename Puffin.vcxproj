@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -155,6 +155,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui.cpp" />
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Dependencies\ImGUI\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
@@ -170,6 +177,15 @@
     <None Include="res\shaders\Basic.shader" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dependencies\ImGUI\imgui\imconfig.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imgui.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imgui_internal.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imstb_textedit.h" />
+    <ClInclude Include="Dependencies\ImGUI\imgui\imstb_truetype.h" />
     <ClInclude Include="Dependencies\STB_Image\STB\stb_image.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Renderer.h" />
