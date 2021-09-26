@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src; $(SolutionDir)Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src; $(SolutionDir)Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -124,7 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src; $(SolutionDir)Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -142,7 +142,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev\Puffin\Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src; $(SolutionDir)Dependencies\ImGUI;$(SolutionDir)Dependencies\GLM;$(SolutionDir)Dependencies\STB_Image;$(SolutionDir)Dependencies\glew-2.1.0\include;$(SolutionDir)Dependencies\GLFW\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>CustomGL.h;%(AdditionalModuleDependencies)</AdditionalModuleDependencies>
     </ClCompile>
     <Link>
@@ -167,13 +167,17 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\stb_image.cpp" />
+    <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\Window.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBufferLayout.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\tests\Test_ClearColor.cpp" />
+    <ClCompile Include="src\tests\Test_Quad.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\Basic_NoMVP.shader" />
     <None Include="res\shaders\Basic.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -190,11 +194,14 @@
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />
+    <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\Window.h" />
     <ClInclude Include="src\VertexBuffer.h" />
     <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\VertexBufferLayout.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\tests\Test_ClearColor.h" />
+    <ClInclude Include="src\tests\Test_Quad.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

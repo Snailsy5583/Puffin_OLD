@@ -9,9 +9,12 @@ Window::Window(void (*_OnBeginWindow)(GLFWwindow*), void(*_OnUpdate)(float))
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);
+    glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
     
-    window = glfwCreateWindow(640, 480, "Puffin", NULL, NULL);
+    window = glfwCreateWindow(1920, 1080, "Puffin", NULL, NULL);
+
+    
 
     glfwSwapInterval(1);
 

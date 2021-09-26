@@ -5,6 +5,8 @@
 #include "Shader.h"
 #include "IndexBuffer.h"
 
+#include <glm/glm.hpp>
+
 bool CheckErrors(const char * file, const char * function, int line);
 
 void ClearErrors();
@@ -13,6 +15,8 @@ class Renderer
 {
 public:
 	void Draw(const VertexArray & va, const IndexBuffer & ib, const Shader & shader);
+
+	void Clear(glm::vec4 color);
 };
 
 //void DrawIndices();

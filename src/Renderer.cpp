@@ -24,3 +24,9 @@ void Renderer::Draw(const VertexArray & va, const IndexBuffer & ib, const Shader
 
 	GLCall(glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr));
 }
+
+void Renderer::Clear(glm::vec4 color)
+{
+	GLCall(glClearColor(color.x, color.y, color.z, color.w));
+	GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
+}
