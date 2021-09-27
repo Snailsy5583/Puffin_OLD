@@ -18,6 +18,7 @@
 //tests
 #include "tests/Test_Quad.h"
 #include "tests/Test_ClearColor.h"
+#include "tests/Test_TexturedQuad.h"
 
 void OnBeginWindow(GLFWwindow*);
 void OnUpdate(float deltaTime);
@@ -40,7 +41,7 @@ int main()
 
     // style dark
     ImGui::StyleColorsDark();
-    glm::vec4 clear_color = { 0.1f, 0, 0, 1 };
+    glm::vec4 clear_color = { 0.03f, 0.05f, 0.07f, 1 };
 
     Test::Test* currentTest = nullptr;
     Test::TestMenu* testMenu = new Test::TestMenu(currentTest);
@@ -48,6 +49,7 @@ int main()
 
     testMenu->RegisterTest<Test::Test_ClearColor>("Clear Color");
     testMenu->RegisterTest<Test::Test_Quad>("Quad");
+    testMenu->RegisterTest<Test::Test_TexturedQuad>("Textured Quad");
 
     //window.Update();
 
@@ -70,7 +72,6 @@ int main()
                 delete currentTest;
                 currentTest = testMenu;
             }
-            ImGui::Text("Test");
             currentTest->OnUpdate(0);
             currentTest->OnRender(renderer);
             currentTest->OnImGUIRender();
