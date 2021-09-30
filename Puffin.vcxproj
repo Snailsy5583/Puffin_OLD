@@ -178,7 +178,7 @@
     <ClCompile Include="src\tests\Test_TexturedQuad.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic_NoMVP.shader" />
+    <None Include="res\shaders\Basic_NoMVP,Texture.shader" />
     <None Include="res\shaders\Basic.shader" />
   </ItemGroup>
   <ItemGroup>

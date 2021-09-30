@@ -7,7 +7,7 @@
 namespace Test
 {
 	Test_Quad::Test_Quad()
-		: m_VB(m_Positions, sizeof(m_Positions)), m_IB(m_Indices, 6), m_Shader("res/shaders/Basic_NoMVP.shader"), m_Layout(), m_Color(glm::vec4(1, 1, 1, 1))
+		: m_VB(m_Positions, sizeof(m_Positions)), m_IB(m_Indices, 6), m_Shader("res/shaders/Basic_NoMVP,Texture.shader"), m_Layout(), m_Color(glm::vec4(1, 1, 1, 1))
 	{
 		m_Layout.Push<float>(2);
 		m_VA.AddBuffer(m_VB, m_Layout);

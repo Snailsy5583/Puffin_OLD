@@ -13,6 +13,8 @@
 
 #include <imgui/imgui.h>
 
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace Test
 {
 
@@ -27,12 +29,12 @@ namespace Test
 		void OnImGUIRender() override;
 
 	private:
-		float m_Positions[8] =
+		float m_Positions[16] =
 		{
-			-0.5f, -0.5f,
-			 0.5f, -0.5f,
-			 0.5f,  0.5f,
-			-0.5f,  0.5f
+			-0.5f, -0.5f,	 0.f,  0.f,
+			 0.5f, -0.5f,	 1.f,  0.f,
+			 0.5f,  0.5f,	 1.f,  1.f,
+			-0.5f,  0.5f,	 0.f,  1.f
 		};;
 
 		unsigned int m_Indices[6] =
@@ -51,8 +53,12 @@ namespace Test
 
 		glm::vec4 m_ClearColor;
 		glm::vec4 m_Color;
-		const char * m_TexturePath;
 		Texture m_Texture;
+
+		glm::mat4 m_Model;
+		glm::mat4 m_View;
+		glm::mat4 m_Projection;
+		glm::mat4 m_MVP;
 
 	};
 
