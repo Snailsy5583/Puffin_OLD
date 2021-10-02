@@ -1,5 +1,7 @@
 #include "Test_TexturedQuad.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 namespace Test
 {
 
@@ -12,8 +14,8 @@ namespace Test
 		m_Shader.Bind();
 		m_Shader.SetUniform(UniformType::FLOAT_4, "u_Color", m_Color.x, m_Color.y, m_Color.z, m_Color.w);
 		m_Texture.Bind(0);
-		//m_MVP = m_Projection * m_View * m_Model;
-		//m_Shader.SetUniformMat4("u_MVP", m_MVP);
+		m_MVP = m_Projection * m_View * m_Model;
+		m_Shader.SetUniformMat4("u_MVP", m_MVP);
 	}
 
 	Test_TexturedQuad::~Test_TexturedQuad()
@@ -24,7 +26,6 @@ namespace Test
 	{
 		m_Shader.Bind();
 		m_Shader.SetUniform(UniformType::FLOAT_4, "u_Color", m_Color.x, m_Color.y, m_Color.z, m_Color.w);
-		m_Shader.SetUniformMat4("u_MVP", m_MVP);
 		m_MVP = m_Projection * m_View * m_Model;
 		m_Shader.SetUniformMat4("u_MVP", m_MVP);
 		m_Texture.Bind(0);

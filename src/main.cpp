@@ -19,6 +19,7 @@
 #include "tests/Test_Quad.h"
 #include "tests/Test_ClearColor.h"
 #include "tests/Test_TexturedQuad.h"
+#include "tests/Test_Cube.h"
 
 void OnBeginWindow(GLFWwindow*);
 void OnUpdate(float deltaTime);
@@ -50,6 +51,7 @@ int main()
     testMenu->RegisterTest<Test::Test_ClearColor>("Clear Color");
     testMenu->RegisterTest<Test::Test_Quad>("Quad");
     testMenu->RegisterTest<Test::Test_TexturedQuad>("Textured Quad");
+    testMenu->RegisterTest<Test::Test_Cube>("Cube");
 
     //window.Update();
 
@@ -81,6 +83,7 @@ int main()
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
+        glfwSwapInterval(1);
         glfwSwapBuffers(window.GetWindow());
         glfwPollEvents();
     }
@@ -98,5 +101,4 @@ void OnBeginWindow(GLFWwindow *)
 
 void OnUpdate(float deltaTime)
 {
-    GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 }
