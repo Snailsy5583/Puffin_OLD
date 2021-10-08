@@ -1,7 +1,8 @@
 #include "Window.h"
 
 Window::Window(void (*_OnBeginWindow)(GLFWwindow*), void(*_OnUpdate)(float)) 
-    : OnUpdate(_OnUpdate), OnBeginWindow(_OnBeginWindow)
+    :   OnUpdate(_OnUpdate), OnBeginWindow(_OnBeginWindow),
+        m_InputSystem(new Input(this))
 {
     if (!glfwInit())
         return;
@@ -12,13 +13,13 @@ Window::Window(void (*_OnBeginWindow)(GLFWwindow*), void(*_OnUpdate)(float))
     glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
 
     
-    window = glfwCreateWindow(1920, 1080, "Puffin", NULL, NULL);
+    m_Window = glfwCreateWindow(1920, 1080, "Puffin", NULL, NULL);
 
     
 
     glfwSwapInterval(1);
 
-    if (!window)
+    if (!m_Window)
     {
         glfwTerminate();
         return;
@@ -32,24 +33,25 @@ Window::Window(void (*_OnBeginWindow)(GLFWwindow*), void(*_OnUpdate)(float))
 
 Window::~Window()
 {
+    delete m_InputSystem;
     glfwTerminate();
 }
 
 void Window::MakeContextCurrent()
 {
-    glfwMakeContextCurrent(window);
+    glfwMakeContextCurrent(m_Window);
 }
 
 void Window::Update()
 {
-    OnBeginWindow(window);
-    while (!glfwWindowShouldClose(window))
+    OnBeginWindow(m_Window);
+    while (!glfwWindowShouldClose(m_Window))
     {
         GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
         OnUpdate(0);
         glfwSwapInterval(1);
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(m_Window);
         glfwPollEvents();
     }
 }

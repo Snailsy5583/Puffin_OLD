@@ -16,7 +16,7 @@ namespace Test
 		Test_Cube();
 		~Test_Cube();
 
-		void OnUpdate(float deltaTime) override;
+		void OnUpdate(float deltaTime, Input * input) override;
 		void OnRender(Renderer & renderer) override;
 		void OnImGUIRender() override;
 
@@ -37,7 +37,7 @@ namespace Test
 			4, 5, 6, 6, 7, 4,
 			5, 1, 2, 2, 6, 5,
 			1, 0, 3, 3, 2, 1,
-			0, 4, 7, 7, 2, 0,
+			0, 4, 7, 7, 3, 0,
 			7, 6, 2, 2, 3, 7,
 			0, 1, 5, 5, 4, 0
 		};
@@ -55,13 +55,20 @@ namespace Test
 		glm::mat4 m_Model;
 		glm::mat4 m_View;
 		glm::mat4 m_Projection;
-		glm::mat4 m_MVP;
 
 		float m_Rotation;
 		float m_RotationSpeed;
 
 		float m_FOV;
 		glm::vec3 m_Position;
+		glm::vec3 m_LightPosition;
+
+		float m_CamSpeed;
+		glm::vec3 m_CamLoc;
+		glm::vec2 m_StartCamRot;
+		glm::vec2 m_CamRot;
+		glm::vec2 m_EndCamRot;
+		bool m_IsLooking;
 	};
 };
 

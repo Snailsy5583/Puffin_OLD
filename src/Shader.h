@@ -15,6 +15,7 @@ struct ShaderProgramSource
 {
 	std::string VertexSource;
 	std::string FragmentSource;
+	std::string GeometrySource;
 };
 
 enum class UniformType

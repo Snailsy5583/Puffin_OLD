@@ -40,8 +40,13 @@ int main()
     ImGui_ImplGlfw_InitForOpenGL(window.GetWindow(), true);
     ImGui_ImplOpenGL3_Init("#version 150");
 
+    GLCall(glEnable(GL_DEPTH_TEST));
+    GLCall(glDepthFunc(GL_LESS));
+
     // style dark
-    ImGui::StyleColorsDark();
+    //ImGui::StyleColorsDark();
+    //ImGui::StyleColorsLight();
+    ImGui::StyleColorsClassic();
     glm::vec4 clear_color = { 0.03f, 0.05f, 0.07f, 1 };
 
     Test::Test* currentTest = nullptr;
@@ -66,15 +71,13 @@ int main()
 
         if (currentTest)
         {
-            currentTest->OnUpdate(0);
-            currentTest->OnRender();
             ImGui::Begin("Test");
             if (currentTest != testMenu && ImGui::Button("<-"))
             {
                 delete currentTest;
                 currentTest = testMenu;
             }
-            currentTest->OnUpdate(0);
+            currentTest->OnUpdate((float) window.GetInputSystem()->GetDeltaTime(), window.GetInputSystem());
             currentTest->OnRender(renderer);
             currentTest->OnImGUIRender();
             ImGui::End();

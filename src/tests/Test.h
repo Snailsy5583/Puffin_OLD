@@ -7,6 +7,8 @@
 
 #include <glm/glm.hpp>
 
+#include "Window.h"
+
 class Renderer;
 
 namespace Test
@@ -18,6 +20,7 @@ namespace Test
 		virtual ~Test() { }
 
 		virtual void OnUpdate(float deltaTime) { }
+		virtual void OnUpdate(float deltaTime, Input * input) { }
 		virtual void OnRender() { }
 		virtual void OnRender(Renderer& renderer) { }
 		virtual void OnImGUIRender() { }
