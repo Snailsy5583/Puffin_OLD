@@ -83,20 +83,29 @@ namespace Test
 		glm::mat4 CamRotT = CamRotX * CamRotY;
 
 		glm::vec3 ForVec = {CamRotT[0][2], CamRotT[1][2], CamRotT[2][2]};
+		glm::vec3 UpVec = {CamRotT[0][1], CamRotT[1][1], CamRotT[2][1]};
+		glm::vec3 RightVec = {CamRotT[0][0], CamRotT[1][0], CamRotT[2][0]};
 
 		//glm::vec3 RotCamLoc = ForVec * (glm::length(m_CamLoc));
 		
 		glm::mat4 CamTran = glm::translate(glm::mat4(1.f), m_CamLoc);
 
-		m_View = CamRotT * CamTran * 1.f;
-		//m_View = glm::lookAt(glm::vec3(CamTran * glm::vec4(1.f)), glm::vec3(CamRotT * glm::vec4(1.f)), {0.f, 1.f, 0.f});
+		//m_View =	
+		//			CamRotT * 
+		//			CamTran * 
+		//			1.f;
+
+		m_View = glm::lookAt(glm::vec3(CamTran * glm::vec4(0.f, 0.f, 0.f, 1.f)), ForVec, UpVec);
+
 		// 
 		//m_View *= glm::translate(glm::mat4(1.f), glm::vec3(CamRotX*CamRotY*glm::vec4(m_CamLoc, 1.f)));
 
 		//m_View *= glm::translate(glm::mat4(1.f), m_CamLoc);
 
-		m_Model =	glm::translate(glm::mat4(1.f), m_Position) * 
-					glm::rotate(glm::mat4(1.f), glm::radians(m_Rotation), glm::vec3(1.f, 0.f, 1.f));
+		m_Model =	
+					glm::rotate(glm::mat4(1.f), glm::radians(m_Rotation), glm::vec3(1.f, 0.f, 1.f))*
+					glm::translate(glm::mat4(1.f), m_Position) * 
+					1.f;
 		m_Rotation += m_RotationSpeed;
 
 		m_Shader.SetUniformMat4("u_Model", m_Model);
